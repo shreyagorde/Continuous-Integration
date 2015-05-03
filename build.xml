@@ -20,13 +20,11 @@
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
-                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="unittests">
-                <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
         </copy>
@@ -59,11 +57,6 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target name="Main (1)">
-        <java classname="edu.ncsu.csc326.coffeemaker.Main" failonerror="true" fork="yes">
-            <classpath refid="CoffeeMaker_JUnit.classpath"/>
-        </java>
-    </target>
     <target name="CoffeeMaker_JUnit">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
@@ -71,6 +64,11 @@
             <test name="edu.ncsu.csc326.coffeemaker.CoffeeMakerTest" todir="${junit.output.dir}"/>
             <classpath refid="CoffeeMaker_JUnit.classpath"/>
         </junit>
+    </target>
+    <target name="main (1)">
+        <java classname="edu.ncsu.csc326.coffeemaker.Main" failonerror="true" fork="yes">
+            <classpath refid="CoffeeMaker_JUnit.classpath"/>
+        </java>
     </target>
     <target name="junitreport">
         <junitreport todir="${junit.output.dir}">
