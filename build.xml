@@ -65,7 +65,7 @@
             <classpath refid="CoffeeMaker_JUnit.classpath"/>
         </junit>
     </target>
-    <target name="main (1)">
+    <target name="run">
         <java classname="edu.ncsu.csc326.coffeemaker.Main" failonerror="true" fork="yes">
             <classpath refid="CoffeeMaker_JUnit.classpath"/>
         </java>
@@ -78,5 +78,5 @@
             <report format="frames" todir="${junit.output.dir}"/>
         </junitreport>
     </target>
-    <target name="test" depends="main (1),CoffeeMaker_JUnit,clean"/>
+    <target name="test" depends="run,CoffeeMaker_JUnit,clean"/>
 </project>
